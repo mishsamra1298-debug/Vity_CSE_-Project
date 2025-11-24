@@ -1,0 +1,23 @@
+import time,sys 
+n=int(input("Enter the number :")) 
+st=time.perf_counter() 
+def is_mersenne_prime(p): 
+if p < 2: 
+return False 
+for i in range(2, int(p ** 0.5) + 1): 
+if p % i == 0: 
+return False 
+mersenne = 2 ** p - 1 
+for i in range(2, int(mersenne ** 0.5) + 1): 
+if mersenne % i == 0: 
+return False 
+return True 
+x=is_mersenne_prime(n) 
+print(x) 
+et=time.perf_counter() 
+ent=et-st 
+print(f"Program execution time:{ent:4f}seconds") 
+mem_n = sys.getsizeof(n) 
+mem_count = sys.getsizeof(is_mersenne_prime(n)) 
+mem_total = mem_n + mem_count 
+print("Approximate memory used (bytes):", mem_total) 
