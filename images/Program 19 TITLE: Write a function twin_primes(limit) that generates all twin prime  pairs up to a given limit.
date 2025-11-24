@@ -1,0 +1,28 @@
+import time,sys 
+n=int(input("Enter the range :")) 
+st=time.perf_counter() 
+def twin_primes(n): 
+t=[] 
+for i in range(2, n- 1): 
+prime1=True 
+for j in range(2, int(i ** 0.5) + 1): 
+if i % j == 0: 
+prime1=False 
+break 
+prime2= True 
+for j in range(2, int((i + 2) ** 0.5) + 1): 
+if (i + 2) % j == 0: 
+prime2=False 
+break 
+if prime1 and prime2 and (i + 2) <=n: 
+t.append((i, i + 2)) 
+return t 
+x=twin_primes(n) 
+print(x) 
+et=time.perf_counter() 
+ent=et-st 
+print(f"Program execution time:{ent:4f}seconds") 
+mem_n = sys.getsizeof(n) 
+mem_count = sys.getsizeof(twin_primes(n)) 
+mem_total = mem_n + mem_count 
+print("Approximate memory used (bytes):", mem_total) 
